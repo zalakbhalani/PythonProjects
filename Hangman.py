@@ -1,4 +1,5 @@
 import random
+import csv
 
 def convert_lst_to_str(s):
     movie = ""
@@ -11,7 +12,18 @@ def convert_str_to_list(l):
 name = input("What is your name? ")
 print("Hello, " + name, "Time to play hangman!")
 
-movie1 = "now you see me"
+filename = "bollywood.csv"
+rows = []
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)
+    for row in csvreader:
+        rows.append(row)
+rows1 = []
+for i in rows[1:]:
+    if int(i[0]) >= 2008:
+        rows1.append(i[1])
+movie1 = random.choice(rows1)
+
 p = "_" * len(movie1)
 list1 = []
 for i in range(len(movie1)):
@@ -49,5 +61,6 @@ if movie3 == movie1:
     print("You won!!")
 else:
     print("You lost.")
+    print("The title of movie is : " ,movie1)
 
 
