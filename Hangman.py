@@ -39,13 +39,16 @@ turns = 9
 while turns:
     a = str(input("Enter word for the film: "))
     list2 = []
-    if a in movie1:
+    if (a in movie1) or (a.upper() in movie1):
         for i in range(len(movie1)):
-            if movie1[i] == a:
+            if (movie1[i] == a) or (movie1[i] == a.upper()):
                 list2.append(i)
         movie2 = convert_str_to_list(movie3)
         for j in list2:
-            movie2[j] = a
+            if movie1[j].isupper():
+                movie2[j] = a.upper()
+            else:
+                movie2[j] = a
         movie3 = convert_lst_to_str(movie2)
         print(movie3,"\n")
         list2.clear()
@@ -57,10 +60,11 @@ while turns:
         turns -= 1
         print("You have", + turns, 'more guesses')
         print(movie3,"\n")
-if movie3 == movie1:
-    print("You won!!")
-else:
-    print("You lost.")
-    print("The title of movie is : " ,movie1)
+if turns == 0:
+    if movie3 == movie1:
+        print("You won!!")
+    else:
+        print("You lost.")
+        print("The title of movie is : " ,movie1)
 
 
