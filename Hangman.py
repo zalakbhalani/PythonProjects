@@ -37,7 +37,7 @@ movie3 = convert_lst_to_str(movie2)
 print(movie3)
 turns = 9
 while turns:
-    a = str(input("Enter word for the film: "))
+    a = str(input("Enter your guess in one letter: "))
     list2 = []
     if (a in movie1) or (a.upper() in movie1):
         for i in range(len(movie1)):
@@ -56,7 +56,7 @@ while turns:
             print("You won!!")
             break
     else:
-        print("You guessed the wrong word")
+        print("You guessed the wrong letter")
         turns -= 1
         print("You have", + turns, 'more guesses')
         print(movie3,"\n")
